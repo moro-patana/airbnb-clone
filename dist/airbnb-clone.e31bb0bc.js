@@ -28443,7 +28443,11 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function WindBnb() {
   console.log(_stays.default);
-  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h2", null, "Hello"));
+  return /*#__PURE__*/_react.default.createElement("article", null, /*#__PURE__*/_react.default.createElement("header", null, /*#__PURE__*/_react.default.createElement("h2", null, "Stays in Finland")), _stays.default.map(function (bnb) {
+    return /*#__PURE__*/_react.default.createElement("ul", null, /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("img", {
+      src: bnb.photo
+    })), /*#__PURE__*/_react.default.createElement("li", null, bnb.superHost ? "superHost" : ""), /*#__PURE__*/_react.default.createElement("li", null, bnb.type), /*#__PURE__*/_react.default.createElement("li", null, bnb.rating));
+  }));
 }
 
 var _default = WindBnb;
