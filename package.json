@@ -15,6 +15,9 @@
   "bugs": {
     "url": "https://github.com/moro-patana/airbnb-clone/issues"
   },
+  "browserslist": [
+    "last 1 chrome versions"
+  ],
   "homepage": "https://github.com/moro-patana/airbnb-clone#readme",
   "dependencies": {
     "react": "^16.14.0",
