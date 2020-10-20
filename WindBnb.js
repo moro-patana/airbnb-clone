@@ -1,28 +1,16 @@
 import React from "react"
-import airbnbList from "./stays.json"
-function WindBnb() {
-console.log(airbnbList);
+function WindBnb(bnb) {
     return (
-          <div className="airbnb-list">
-              <header><h2>Stays in Finland</h2></header>
-
-              <div className="container">
-                  {airbnbList.map(bnb => (
-    
-                      <article key={bnb.photo} className="article">
-                          <p><img src={bnb.photo} /></p>
-                            <ul>
-                                {bnb.superHost ? <li className="super-host">{bnb.superHost} Super Host</li> : ""}
-                                <li>{bnb.type}</li>
-                                 {bnb.beds ? <li>{bnb.beds} bed(s)</li> : ""}
-                                <li className="rating">{bnb.rating}</li>
-                            </ul>
-                            <p>{bnb.title}</p>
-                            <p>{bnb.city}</p>
-                      </article>
-                  ))}
-              </div>
-          </div>
+        <div>
+            <img src={bnb.photo} />
+            <div className="list">
+                {bnb.superHost ? <button className="super-host">Super Host</button> : ""}
+                <span className="type">{bnb.type}</span>
+                {bnb.beds ? <span className="beds">{bnb.beds} bed(s)</span> : ""}
+                <span className="rating">{bnb.rating}</span>
+            </div>
+            <p className="title">{bnb.title}</p>
+        </div>
     )
 }
 export default WindBnb;

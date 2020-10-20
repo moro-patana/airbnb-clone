@@ -28285,7 +28285,39 @@ if ("development" === 'production') {
 } else {
   module.exports = require('./cjs/react-dom.development.js');
 }
-},{"./cjs/react-dom.development.js":"node_modules/react-dom/cjs/react-dom.development.js"}],"stays.json":[function(require,module,exports) {
+},{"./cjs/react-dom.development.js":"node_modules/react-dom/cjs/react-dom.development.js"}],"WindBnb.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function WindBnb(bnb) {
+  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("img", {
+    src: bnb.photo
+  }), /*#__PURE__*/_react.default.createElement("div", {
+    className: "list"
+  }, bnb.superHost ? /*#__PURE__*/_react.default.createElement("button", {
+    className: "super-host"
+  }, "Super Host") : "", /*#__PURE__*/_react.default.createElement("span", {
+    className: "type"
+  }, bnb.type), bnb.beds ? /*#__PURE__*/_react.default.createElement("span", {
+    className: "beds"
+  }, bnb.beds, " bed(s)") : "", /*#__PURE__*/_react.default.createElement("span", {
+    className: "rating"
+  }, bnb.rating)), /*#__PURE__*/_react.default.createElement("p", {
+    className: "title"
+  }, bnb.title));
+}
+
+var _default = WindBnb;
+exports.default = _default;
+},{"react":"node_modules/react/index.js"}],"stays.json":[function(require,module,exports) {
 module.exports = [{
   "city": "Helsinki",
   "country": "Finland",
@@ -28427,7 +28459,7 @@ module.exports = [{
   "beds": 3,
   "photo": "https://images.unsplash.com/photo-1523755231516-e43fd2e8dca5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1275&q=80"
 }];
-},{}],"WindBnb.js":[function(require,module,exports) {
+},{}],"SearchLocation.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -28435,35 +28467,54 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
-var _react = _interopRequireDefault(require("react"));
+var _react = _interopRequireWildcard(require("react"));
 
 var _stays = _interopRequireDefault(require("./stays.json"));
 
+var _WindBnb = _interopRequireDefault(require("./WindBnb.js"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function WindBnb() {
-  console.log(_stays.default);
-  return /*#__PURE__*/_react.default.createElement("div", {
-    className: "airbnb-list"
-  }, /*#__PURE__*/_react.default.createElement("header", null, /*#__PURE__*/_react.default.createElement("h2", null, "Stays in Finland")), /*#__PURE__*/_react.default.createElement("div", {
-    className: "container"
-  }, _stays.default.map(function (bnb) {
-    return /*#__PURE__*/_react.default.createElement("article", {
-      key: bnb.photo,
-      className: "article"
-    }, /*#__PURE__*/_react.default.createElement("p", null, /*#__PURE__*/_react.default.createElement("img", {
-      src: bnb.photo
-    })), /*#__PURE__*/_react.default.createElement("ul", null, bnb.superHost ? /*#__PURE__*/_react.default.createElement("li", {
-      className: "super-host"
-    }, bnb.superHost, " Super Host") : "", /*#__PURE__*/_react.default.createElement("li", null, bnb.type), bnb.beds ? /*#__PURE__*/_react.default.createElement("li", null, bnb.beds, " bed(s)") : "", /*#__PURE__*/_react.default.createElement("li", {
-      className: "rating"
-    }, bnb.rating)), /*#__PURE__*/_react.default.createElement("p", null, bnb.title), /*#__PURE__*/_react.default.createElement("p", null, bnb.city));
-  })));
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+function SearchLocation() {
+  const hostSearch = async e => {
+    e.preventDefault();
+  };
+
+  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", {
+    className: "search"
+  }, /*#__PURE__*/_react.default.createElement("form", {
+    onSubmit: hostSearch
+  }, /*#__PURE__*/_react.default.createElement("input", {
+    type: "text",
+    placeholder: " Search location",
+    name: "location",
+    onChange: e => e.target.value
+  }), /*#__PURE__*/_react.default.createElement("input", {
+    type: "text",
+    placeholder: " Add Guests",
+    name: "guests"
+  }), /*#__PURE__*/_react.default.createElement("button", null, /*#__PURE__*/_react.default.createElement("i", null, /*#__PURE__*/_react.default.createElement("img", {
+    className: "search-icon",
+    src: "./search-icon.svg",
+    alt: "search icon"
+  }))))), /*#__PURE__*/_react.default.createElement("h2", null, "Stays in Finland"), /*#__PURE__*/_react.default.createElement("div", {
+    className: "card-list"
+  }, _stays.default.map(bnb => {
+    return /*#__PURE__*/_react.default.createElement(_WindBnb.default, _extends({
+      key: bnb.photo
+    }, bnb));
+  }))));
 }
 
-var _default = WindBnb;
+var _default = SearchLocation;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","./stays.json":"stays.json"}],"App.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","./stays.json":"stays.json","./WindBnb.js":"WindBnb.js"}],"App.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -28475,15 +28526,19 @@ var _react = _interopRequireDefault(require("react"));
 
 var _WindBnb = _interopRequireDefault(require("./WindBnb.js"));
 
+var _stays = _interopRequireDefault(require("./stays.json"));
+
+var _SearchLocation = _interopRequireDefault(require("./SearchLocation.js"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function App() {
-  return /*#__PURE__*/_react.default.createElement(_WindBnb.default, null);
+  return /*#__PURE__*/_react.default.createElement(_SearchLocation.default, null);
 }
 
 var _default = App;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","./WindBnb.js":"WindBnb.js"}],"index.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","./WindBnb.js":"WindBnb.js","./stays.json":"stays.json","./SearchLocation.js":"SearchLocation.js"}],"index.js":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));
