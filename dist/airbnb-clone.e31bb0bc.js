@@ -28451,9 +28451,9 @@ function WindBnb() {
     return /*#__PURE__*/_react.default.createElement("article", {
       key: bnb.photo,
       className: "article"
-    }, /*#__PURE__*/_react.default.createElement("ul", null, /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("img", {
+    }, /*#__PURE__*/_react.default.createElement("p", null, /*#__PURE__*/_react.default.createElement("img", {
       src: bnb.photo
-    })), /*#__PURE__*/_react.default.createElement("li", null, bnb.superHost ? "superHost" : ""), /*#__PURE__*/_react.default.createElement("li", null, bnb.type), bnb.beds ? /*#__PURE__*/_react.default.createElement("li", null, bnb.beds, " bed(s)") : "", /*#__PURE__*/_react.default.createElement("li", null, bnb.rating)), /*#__PURE__*/_react.default.createElement("p", null, bnb.title), /*#__PURE__*/_react.default.createElement("p", null, bnb.city));
+    })), /*#__PURE__*/_react.default.createElement("ul", null, bnb.superHost ? /*#__PURE__*/_react.default.createElement("li", null, bnb.superHost) : "", /*#__PURE__*/_react.default.createElement("li", null, bnb.type), bnb.beds ? /*#__PURE__*/_react.default.createElement("li", null, bnb.beds, " bed(s)") : "", /*#__PURE__*/_react.default.createElement("li", null, bnb.rating)), /*#__PURE__*/_react.default.createElement("p", null, bnb.title), /*#__PURE__*/_react.default.createElement("p", null, bnb.city));
   })));
 }
 

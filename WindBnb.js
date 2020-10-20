@@ -10,9 +10,9 @@ console.log(airbnbList);
                   {airbnbList.map(bnb => (
     
                       <article key={bnb.photo} className="article">
+                          <p><img src={bnb.photo} /></p>
                             <ul>
-                                <li><img src={bnb.photo} /></li>
-                                <li>{bnb.superHost ? "superHost" : ""}</li>
+                                {bnb.superHost ? <li>{bnb.superHost}</li> : ""}
                                 <li>{bnb.type}</li>
                                  {bnb.beds ? <li>{bnb.beds} bed(s)</li> : ""}
                                 <li>{bnb.rating}</li>
