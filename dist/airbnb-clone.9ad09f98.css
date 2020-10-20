@@ -14,7 +14,9 @@ label {
     display: none;
 }
 ul {
+    position: relative;
     padding: 0;
+    margin: 0;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -25,8 +27,6 @@ li {
 .super-host {
     width: 88.61px;
     height: 24.81px;
-    left: 13px;
-    top: 462.65px;
     border: 1px solid #4F4F4F;
     box-sizing: border-box;
     border-radius: 12px;
@@ -38,6 +38,20 @@ li {
     color: #4F4F4F;
     text-align: center;
     padding-top: 0.4rem;
+}
+.rating {
+    /* position: relative; */
+}
+.rating::before {
+    content: "";
+    display: block;
+    background-image: url("/star-icon.7c92ff19.svg");
+    background-repeat: no-repeat;
+    position: absolute;
+    left: 90%;
+    /* right: 132%; */
+    height: 16px;
+    width: 16px;
 }
 
 /*# sourceMappingURL=/airbnb-clone.9ad09f98.css.map */
