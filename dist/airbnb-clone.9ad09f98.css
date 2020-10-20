@@ -22,5 +22,22 @@ ul {
 li {
     list-style: none;
 }
+.super-host {
+    width: 88.61px;
+    height: 24.81px;
+    left: 13px;
+    top: 462.65px;
+    border: 1px solid #4F4F4F;
+    box-sizing: border-box;
+    border-radius: 12px;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 10px;
+    line-height: 12px;
+    text-transform: uppercase;
+    color: #4F4F4F;
+    text-align: center;
+    padding-top: 0.4rem;
+}
 
 /*# sourceMappingURL=/airbnb-clone.9ad09f98.css.map */
