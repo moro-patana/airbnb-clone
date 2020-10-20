@@ -6,10 +6,10 @@ console.log(airbnbList);
           <div className="airbnb-list">
               <header><h2>Stays in Finland</h2></header>
 
-              <div class="container">
+              <div className="container">
                   {airbnbList.map(bnb => (
     
-                      <article key={bnb.id} className="article">
+                      <article key={bnb.photo} className="article">
                             <ul>
                                 <li><img src={bnb.photo} /></li>
                                 <li>{bnb.superHost ? "superHost" : ""}</li>

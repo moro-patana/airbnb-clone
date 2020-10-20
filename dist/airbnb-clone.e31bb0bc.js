@@ -28446,10 +28446,10 @@ function WindBnb() {
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "airbnb-list"
   }, /*#__PURE__*/_react.default.createElement("header", null, /*#__PURE__*/_react.default.createElement("h2", null, "Stays in Finland")), /*#__PURE__*/_react.default.createElement("div", {
-    class: "container"
+    className: "container"
   }, _stays.default.map(function (bnb) {
     return /*#__PURE__*/_react.default.createElement("article", {
-      key: bnb.id,
+      key: bnb.photo,
       className: "article"
     }, /*#__PURE__*/_react.default.createElement("ul", null, /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("img", {
       src: bnb.photo
