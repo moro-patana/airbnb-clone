@@ -12,7 +12,7 @@ console.log(airbnbList);
                       <article key={bnb.photo} className="article">
                           <p><img src={bnb.photo} /></p>
                             <ul>
-                                {bnb.superHost ? <li>{bnb.superHost}</li> : ""}
+                                {bnb.superHost ? <li>{bnb.superHost} Super Host</li> : ""}
                                 <li>{bnb.type}</li>
                                  {bnb.beds ? <li>{bnb.beds} bed(s)</li> : ""}
                                 <li>{bnb.rating}</li>
