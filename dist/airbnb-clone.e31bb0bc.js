@@ -28443,11 +28443,18 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function WindBnb() {
   console.log(_stays.default);
-  return /*#__PURE__*/_react.default.createElement("article", null, /*#__PURE__*/_react.default.createElement("header", null, /*#__PURE__*/_react.default.createElement("h2", null, "Stays in Finland")), _stays.default.map(function (bnb) {
-    return /*#__PURE__*/_react.default.createElement("ul", null, /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("img", {
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: "airbnb-list"
+  }, /*#__PURE__*/_react.default.createElement("header", null, /*#__PURE__*/_react.default.createElement("h2", null, "Stays in Finland")), /*#__PURE__*/_react.default.createElement("div", {
+    class: "container"
+  }, _stays.default.map(function (bnb) {
+    return /*#__PURE__*/_react.default.createElement("article", {
+      key: bnb.id,
+      className: "article"
+    }, /*#__PURE__*/_react.default.createElement("ul", null, /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("img", {
       src: bnb.photo
-    })), /*#__PURE__*/_react.default.createElement("li", null, bnb.superHost ? "superHost" : ""), /*#__PURE__*/_react.default.createElement("li", null, bnb.type), /*#__PURE__*/_react.default.createElement("li", null, bnb.rating));
-  }));
+    })), /*#__PURE__*/_react.default.createElement("li", null, bnb.superHost ? "superHost" : ""), /*#__PURE__*/_react.default.createElement("li", null, bnb.type), bnb.beds ? /*#__PURE__*/_react.default.createElement("li", null, bnb.beds, " bed(s)") : "", /*#__PURE__*/_react.default.createElement("li", null, bnb.rating)), /*#__PURE__*/_react.default.createElement("p", null, bnb.title), /*#__PURE__*/_react.default.createElement("p", null, bnb.city));
+  })));
 }
 
 var _default = WindBnb;
@@ -28512,7 +28519,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49626" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53413" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
