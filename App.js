@@ -1,11 +1,14 @@
 import React from "react"
-import WindBnb from "./WindBnb.js"
-import airBnbList from "./stays.json"
 import SearchLocation from "./SearchLocation.js"
+import WindBnb from "./WindBnb.js";
+import airBnbList from "./stays.json"
 function App() {
     return (
-        < SearchLocation
-        />
+        <div>
+              <SearchLocation/>
+
+        </div>
+        
     )
 }
 export default App;

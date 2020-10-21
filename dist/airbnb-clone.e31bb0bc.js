@@ -28285,39 +28285,7 @@ if ("development" === 'production') {
 } else {
   module.exports = require('./cjs/react-dom.development.js');
 }
-},{"./cjs/react-dom.development.js":"node_modules/react-dom/cjs/react-dom.development.js"}],"WindBnb.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _react = _interopRequireDefault(require("react"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function WindBnb(bnb) {
-  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("img", {
-    src: bnb.photo
-  }), /*#__PURE__*/_react.default.createElement("div", {
-    className: "list"
-  }, bnb.superHost ? /*#__PURE__*/_react.default.createElement("button", {
-    className: "super-host"
-  }, "Super Host") : "", /*#__PURE__*/_react.default.createElement("span", {
-    className: "type"
-  }, bnb.type), bnb.beds ? /*#__PURE__*/_react.default.createElement("span", {
-    className: "beds"
-  }, bnb.beds, " bed(s)") : "", /*#__PURE__*/_react.default.createElement("span", {
-    className: "rating"
-  }, bnb.rating)), /*#__PURE__*/_react.default.createElement("p", {
-    className: "title"
-  }, bnb.title));
-}
-
-var _default = WindBnb;
-exports.default = _default;
-},{"react":"node_modules/react/index.js"}],"stays.json":[function(require,module,exports) {
+},{"./cjs/react-dom.development.js":"node_modules/react-dom/cjs/react-dom.development.js"}],"stays.json":[function(require,module,exports) {
 module.exports = [{
   "city": "Helsinki",
   "country": "Finland",
@@ -28459,7 +28427,39 @@ module.exports = [{
   "beds": 3,
   "photo": "https://images.unsplash.com/photo-1523755231516-e43fd2e8dca5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1275&q=80"
 }];
-},{}],"SearchLocation.js":[function(require,module,exports) {
+},{}],"WindBnb.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function WindBnb(bnb) {
+  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("img", {
+    src: bnb.photo
+  }), /*#__PURE__*/_react.default.createElement("div", {
+    className: "list"
+  }, bnb.superHost ? /*#__PURE__*/_react.default.createElement("button", {
+    className: "super-host"
+  }, "Super Host") : "", /*#__PURE__*/_react.default.createElement("span", {
+    className: "type"
+  }, bnb.type), bnb.beds ? /*#__PURE__*/_react.default.createElement("span", {
+    className: "beds"
+  }, bnb.beds, " bed(s)") : "", /*#__PURE__*/_react.default.createElement("span", {
+    className: "rating"
+  }, bnb.rating)), /*#__PURE__*/_react.default.createElement("p", {
+    className: "title"
+  }, bnb.title));
+}
+
+var _default = WindBnb;
+exports.default = _default;
+},{"react":"node_modules/react/index.js"}],"SearchLocation.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -28482,6 +28482,17 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
 function SearchLocation() {
+  const [location, setLocation] = (0, _react.useState)('');
+  const [searchResult, setSearchResult] = (0, _react.useState)([]);
+
+  const handleChange = e => {
+    setLocation(e.target.value);
+
+    const filterCity = _stays.default.filter(place => place.city.toLowerCase().includes(location));
+
+    setSearchResult(filterCity);
+  };
+
   const hostSearch = async e => {
     e.preventDefault();
   };
@@ -28494,22 +28505,26 @@ function SearchLocation() {
     type: "text",
     placeholder: " Search location",
     name: "location",
-    onChange: e => e.target.value
+    value: location,
+    onChange: handleChange
   }), /*#__PURE__*/_react.default.createElement("input", {
     type: "text",
     placeholder: " Add Guests",
-    name: "guests"
-  }), /*#__PURE__*/_react.default.createElement("button", null, /*#__PURE__*/_react.default.createElement("i", null, /*#__PURE__*/_react.default.createElement("img", {
+    name: "guests",
+    onChange: handleChange
+  }), /*#__PURE__*/_react.default.createElement("button", {
+    type: "submit"
+  }, /*#__PURE__*/_react.default.createElement("i", null, /*#__PURE__*/_react.default.createElement("img", {
     className: "search-icon",
     src: "./search-icon.svg",
     alt: "search icon"
   }))))), /*#__PURE__*/_react.default.createElement("h2", null, "Stays in Finland"), /*#__PURE__*/_react.default.createElement("div", {
     className: "card-list"
-  }, _stays.default.map(bnb => {
-    return /*#__PURE__*/_react.default.createElement(_WindBnb.default, _extends({
-      key: bnb.photo
-    }, bnb));
-  }))));
+  }, location === "" ? _stays.default.map(bnb => /*#__PURE__*/_react.default.createElement(_WindBnb.default, _extends({
+    key: bnb.photo
+  }, bnb))) : searchResult.map(bnb => /*#__PURE__*/_react.default.createElement(_WindBnb.default, _extends({
+    key: bnb.photo
+  }, bnb))))));
 }
 
 var _default = SearchLocation;
@@ -28524,21 +28539,21 @@ exports.default = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
+var _SearchLocation = _interopRequireDefault(require("./SearchLocation.js"));
+
 var _WindBnb = _interopRequireDefault(require("./WindBnb.js"));
 
 var _stays = _interopRequireDefault(require("./stays.json"));
 
-var _SearchLocation = _interopRequireDefault(require("./SearchLocation.js"));
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function App() {
-  return /*#__PURE__*/_react.default.createElement(_SearchLocation.default, null);
+  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_SearchLocation.default, null));
 }
 
 var _default = App;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","./WindBnb.js":"WindBnb.js","./stays.json":"stays.json","./SearchLocation.js":"SearchLocation.js"}],"index.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","./SearchLocation.js":"SearchLocation.js","./WindBnb.js":"WindBnb.js","./stays.json":"stays.json"}],"index.js":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));
@@ -28578,7 +28593,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59169" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52413" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
