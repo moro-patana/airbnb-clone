@@ -28484,13 +28484,19 @@ function _extends() { _extends = Object.assign || function (target) { for (var i
 function SearchLocation() {
   const [location, setLocation] = (0, _react.useState)('');
   const [searchResult, setSearchResult] = (0, _react.useState)([]);
+  const [guest, setGuest] = (0, _react.useState)([]);
 
   const handleChange = e => {
     setLocation(e.target.value);
+    setSearchResult(_stays.default);
+  };
 
-    const filterCity = _stays.default.filter(place => place.city.toLowerCase().includes(location));
+  const filterCity = _stays.default.filter(place => place.city.toLowerCase().includes(location));
 
-    setSearchResult(filterCity);
+  const filterGuest = _stays.default.filter(guests => guests.maxGuests == guest || guests.maxGuests > guest);
+
+  const handleGuest = e => {
+    setGuest(e.target.value);
   };
 
   const hostSearch = async e => {
@@ -28501,17 +28507,27 @@ function SearchLocation() {
     className: "search"
   }, /*#__PURE__*/_react.default.createElement("form", {
     onSubmit: hostSearch
-  }, /*#__PURE__*/_react.default.createElement("input", {
-    type: "text",
-    placeholder: " Search location",
-    name: "location",
-    value: location,
-    onChange: handleChange
-  }), /*#__PURE__*/_react.default.createElement("input", {
-    type: "text",
+  }, /*#__PURE__*/_react.default.createElement("select", {
+    name: "select-city",
+    id: "city",
+    onChange: handleChange,
+    value: location
+  }, /*#__PURE__*/_react.default.createElement("option", {
+    value: ""
+  }, "Add location"), /*#__PURE__*/_react.default.createElement("option", {
+    value: "oulu"
+  }, "Oulu"), /*#__PURE__*/_react.default.createElement("option", {
+    value: "vaasa"
+  }, "Vaasa"), /*#__PURE__*/_react.default.createElement("option", {
+    value: "turku"
+  }, "Turku"), /*#__PURE__*/_react.default.createElement("option", {
+    value: "helsinki"
+  }, "Helsinki")), /*#__PURE__*/_react.default.createElement("input", {
+    type: "number",
     placeholder: " Add Guests",
     name: "guests",
-    onChange: handleChange
+    value: guest,
+    onChange: handleGuest
   }), /*#__PURE__*/_react.default.createElement("button", {
     type: "submit"
   }, /*#__PURE__*/_react.default.createElement("i", null, /*#__PURE__*/_react.default.createElement("img", {
@@ -28522,7 +28538,11 @@ function SearchLocation() {
     className: "card-list"
   }, location === "" ? _stays.default.map(bnb => /*#__PURE__*/_react.default.createElement(_WindBnb.default, _extends({
     key: bnb.photo
-  }, bnb))) : searchResult.map(bnb => /*#__PURE__*/_react.default.createElement(_WindBnb.default, _extends({
+  }, bnb))) : filterCity.map(bnb => /*#__PURE__*/_react.default.createElement(_WindBnb.default, _extends({
+    key: bnb.photo
+  }, bnb)))), /*#__PURE__*/_react.default.createElement("div", null, guest === "" ? _stays.default.map(bnb => /*#__PURE__*/_react.default.createElement(_WindBnb.default, _extends({
+    key: bnb.photo
+  }, bnb))) : filterGuest.map(bnb => /*#__PURE__*/_react.default.createElement(_WindBnb.default, _extends({
     key: bnb.photo
   }, bnb))))));
 }
@@ -28541,10 +28561,6 @@ var _react = _interopRequireDefault(require("react"));
 
 var _SearchLocation = _interopRequireDefault(require("./SearchLocation.js"));
 
-var _WindBnb = _interopRequireDefault(require("./WindBnb.js"));
-
-var _stays = _interopRequireDefault(require("./stays.json"));
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function App() {
@@ -28553,7 +28569,7 @@ function App() {
 
 var _default = App;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","./SearchLocation.js":"SearchLocation.js","./WindBnb.js":"WindBnb.js","./stays.json":"stays.json"}],"index.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","./SearchLocation.js":"SearchLocation.js"}],"index.js":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));

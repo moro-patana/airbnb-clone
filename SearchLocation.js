@@ -5,12 +5,17 @@ import WindBnb from "./WindBnb.js"
 function SearchLocation() {
 const [location, setLocation] = useState('')
 const [searchResult, setSearchResult] = useState([]);
+const [guest, setGuest] = useState([]);
 
 const handleChange = (e) => {
     setLocation(e.target.value);
+     setSearchResult(airbnbList)
+    }
     const filterCity = airbnbList.filter(place => place.city.toLowerCase().includes(location))
-     setSearchResult(filterCity)
-}
+    const filterGuest = airbnbList.filter(guests => guests.maxGuests == guest || guests.maxGuests > guest)
+    const handleGuest = (e) => {
+        setGuest(e.target.value);
+    }
 
     const hostSearch = async (e) => {
         e.preventDefault();
@@ -22,16 +27,18 @@ const handleChange = (e) => {
             <div>
                 <div className="search">
                     <form onSubmit={hostSearch}>
-                        <input type="text"
-                            placeholder=" Search location"
-                            name="location" 
-                            value={location}
-                            onChange={handleChange}
-                        />
-                        <input type="text"
+                    <select name="select-city" id="city" onChange={handleChange} value={location}>
+                        <option value="">Add location</option>
+                        <option value="oulu">Oulu</option>
+                        <option value="vaasa">Vaasa</option>
+                        <option value="turku">Turku</option>
+                        <option value="helsinki">Helsinki</option>
+                    </select>
+                        <input type="number"
                             placeholder=" Add Guests"
                             name="guests" 
-                            onChange={handleChange}
+                            value={guest}
+                            onChange={handleGuest}
                             />
                         <button type="submit">
                             <i><img className="search-icon" src="./search-icon.svg" alt="search icon" /></i>
@@ -44,10 +51,19 @@ const handleChange = (e) => {
                     <WindBnb key={bnb.photo} {...bnb} />
                     ) 
                     :
-
-                    searchResult.map(bnb => 
+                    filterCity.map(bnb => 
                             <WindBnb key={bnb.photo} {...bnb} />
                     )}
+                </div>
+                <div>
+                {guest === "" ? airbnbList.map(bnb => 
+                    <WindBnb key={bnb.photo} {...bnb} />
+                    ) 
+                    :
+                    filterGuest.map(bnb => 
+                            <WindBnb key={bnb.photo} {...bnb} />
+                    )}
+
                 </div>
             </div>
         </>
